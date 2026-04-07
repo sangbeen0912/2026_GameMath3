@@ -5,6 +5,7 @@ using TMPro;
 public class BattleSystem : MonoBehaviour
 {
     public GachaManager gachaManager;
+    public DamageSimuiater damageSimuiater;
 
     [Header("UI Reference")]
     public TMP_Text logText;
@@ -36,8 +37,9 @@ public class BattleSystem : MonoBehaviour
     void Attack()
     {
         bool isCrit = Random.value < critChance;
-        float finalDamage = isCrit ? playerAtk * critMultiplier : playerAtk;
+        //float finalDamage = isCrit ? playerAtk * critMultiplier : playerAtk;
 
+        float finalDamage = damageSimuiater.GetDamage();
         currentEnemyHp -= finalDamage;
 
         if (isCrit)
